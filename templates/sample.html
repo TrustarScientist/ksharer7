@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>Bootstrap Examples</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: center;
+            padding: 8px;
+
+        }
+        .card{
+            width: 200px;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+<body>
+    <table class="table table-hover">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username </th>
+            <th>Password</th>
+        </tr>
+        <tr>
+            <td>Dan</td>
+            <td>David</td>
+            <td>TrustarScientist</td>
+            <td>pass1234</td>
+        </tr>
+        <tr>
+            <td>Tolu</td>
+            <td>Nano</td>
+            <td>BIgFrenzi</td>
+            <td>bf1234</td>
+        </tr>
+    </table>
+
+    <section class="card">
+        <img width="100%" src="https://c8.alamy.com/comp/TC2AR3/modern-polygonal-banner-of-geometric-shapes-low-poly-style-random-triangular-forms-multicolored-triangles-web-design-circles-from-dots-vector-il-TC2AR3.jpg" alt="">
+        <div class="card-body">
+            <b>Sleek Laptop</b>
+            <p>To add a background color to the card, use contextual classe</p>
+            <b class="text-success">$3973</b>
+            <button class="btn btn-success w-100">Buy Now</button>
+
+        </div>
+    </section>
+
+    <div class="dropdown">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+            Dropdown button
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">About</a></li>
+            <li><a class="dropdown-item" href="#">Link 2</a></li>
+            <li><a class="dropdown-item" href="#">Link 3</a></li>
+        </ul>
+    </div>
+
+    <button class="btn btn-danger " data-bs-toggle="collapse" data-bs-target="#demo">Collapsible</button>
+    
+    <div id="demo" class="collapse m-5">
+        Lorem ipsum dolor text....
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+</html>
