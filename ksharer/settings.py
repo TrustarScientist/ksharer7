@@ -89,7 +89,16 @@ DATABASES = {
     }
 }
 
+AUTHENTICATION_BACKENDS = [
+    "apps.accounts.backends.MultiFieldAuthBackend",
+    "django.contrib.auth.backends.ModelBackend",
+]
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'noreply@ksharer.dev'
+
+
+LOGIN_URL = 'accounts:login'
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators

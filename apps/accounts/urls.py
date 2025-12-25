@@ -1,19 +1,15 @@
 from django.urls import path
-from django.contrib.auth import views as auth_views
+# from django.contrib.auth import views as auth_views
+from .views import activate_account, home, login_view, register_view
 
-app_name = "accounts"
+
+
+app_name = 'accounts'
 
 urlpatterns = [
-    path(
-        "login/",
-        auth_views.LoginView.as_view(
-            template_name="accounts/login.html"
-        ),
-        name="login",
-    ),
-    path(
-        "logout/",
-        auth_views.LogoutView.as_view(),
-        name="logout",
-    ),
+    path('login/', login_view, name='login'),
+    # path('logout/', logout_view, name='logout'),
+    path('register/', register_view, name='register'),
+    path('home/', home, name='home'),
+    path('activate/<uidb64>/<token>/', activate_account, name='activate'),
 ]
