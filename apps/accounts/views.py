@@ -1,3 +1,4 @@
+from unittest import result
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
@@ -15,17 +16,23 @@ def home(request):
 
 def login_view(request):
     form = LoginForm(request.POST or None)
+
     if request.method == 'POST' and form.is_valid():
-        user = login_user(
+        result = login_user(
             request,
             form.cleaned_data['identifier'],
             form.cleaned_data['password']
         )
-        # print(user)
-        if user:
+
+        if result == "inactive":
+            form.add_error(None, "Please activate your account via email.")
+        elif result:
             return redirect('accounts:home')
-        form.add_error(None, "Invalid credentials or inactive account.")
+        else:
+            form.add_error(None, "Invalid credentials")
+
     return render(request, 'accounts/login.html', {'form': form})
+
 
 
 def register_view(request):
@@ -45,9 +52,9 @@ def activate_account(request, uidb64, token):
     except Exception:
         user = None
 
-    print("USER:", user)
-    print("ACTIVE:", user.is_active)
-    print("TOKEN OK:", account_activation_token.check_token(user, token))
+    # print("USER:", user)
+    # print("ACTIVE:", user.is_active)
+    # print("TOKEN OK:", account_activation_token.check_token(user, token))
 
     if not user:
         return render(request, 'accounts/activation_invalid.html')

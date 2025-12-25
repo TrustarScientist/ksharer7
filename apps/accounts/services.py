@@ -42,26 +42,41 @@ def send_activation_email(user, request):
     )
 
 
-
-
-
-
 def login_user(request, identifier, password):
-    # user = authenticate(
-    #     request,
-    #     username=identifier,
-    #     password=password
-    # )
-    # if user:
-    #     login(request, user)
-    # return user
-
     user = authenticate(
         request,
         username=identifier,
         password=password
     )
-    if user and user.is_active:
-        login(request, user)
-        return user
-    return None
+
+    if not user:
+        return None
+
+    if not user.is_active:
+        return "inactive"
+
+    login(request, user)
+    return user
+
+
+
+# old code
+# def login_user(request, identifier, password):
+#     # user = authenticate(
+#     #     request,
+#     #     username=identifier,
+#     #     password=password
+#     # )
+#     # if user:
+#     #     login(request, user)
+#     # return user
+
+#     user = authenticate(
+#         request,
+#         username=identifier,
+#         password=password
+#     )
+#     if user and user.is_active:
+#         login(request, user)
+#         return user
+#     return None
