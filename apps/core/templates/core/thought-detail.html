@@ -72,14 +72,13 @@
             <div class="flex items-center flex-1 gap-4">
                 <button onclick="toggleModal('profileModal')" class="lg:hidden flex items-center">
                     <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="Profile"
-                        class="w-9 h-9 rounded-full bg-brand-light ring-2 ring-brand-main/20 hover:ring-brand-main transition-all">
+                        class="w-90 h-9 rounded-full transition-all">
                 </button>
 
                 <div class="hidden md:flex items-center gap-2">
-                    <div
-                        class="w-8 h-8 bg-brand-main rounded flex items-center justify-center text-white shadow-sm shadow-brand-main/20">
-                        <!-- <i data-lucide="mountain" class="w-5 h-5"></i> -->
-                        <img class="w-5 h-5" src="https://trustarscientist.github.io/olcwd/ksharer-logo1-no-bg.png">
+                    <div class="w-8 h-8  rounded flex items-center justify-center ">
+
+                        <img class="w-5 h-500" src="https://trustarscientist.github.io/olcwd/ksharer-logo1-no-bg.png">
                     </div>
                     <span class="font-bold text-slate-800 text-sm uppercase tracking-tighter">Knowledge Island</span>
                 </div>
@@ -88,7 +87,8 @@
             <div class="flex-1 flex justify-center">
                 <div class="md:hidden flex items-center gap-2">
                     <div class="w-8 h-8 bg-brand-main rounded flex items-center justify-center text-white">
-                        <i data-lucide="mountain" class="w-5 h-5"></i>
+                        <!-- <i data-lucide="mountain" class="w-5 h-5"></i> -->
+                        <img class="w-5 h-5" src="https://trustarscientist.github.io/olcwd/ksharer-logo1-no-bg.png">
                     </div>
                 </div>
 
@@ -280,241 +280,180 @@
     </div>
 
     <!-- main content -->
-    <main class="pt-16 pb-20 md:pb-0 lg:pl-64 min-h-screen bg-white">
+    <main class="pt-16 pb-20 md:pb-0 lg:pl-64 min-h-screen bg-white transition-all">
 
-        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-0 md:gap-8">
+        <nav
+            class="px-6 py-4 border-b border-slate-50 flex items-center justify-between sticky top-16 bg-white/90 backdrop-blur-md z-40">
+            <div class="flex items-center gap-4">
+                <button onclick="history.back()" class="p-2 hover:bg-slate-50 rounded-full text-slate-400 transition">
+                    <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                </button>
+                <h2 class="text-[11px] font-black text-slate-900 uppercase tracking-[0.2em]">Intellectual Thread</h2>
+            </div>
+            <button onclick="toggleThoughtSidebar()" class="md:hidden p-2 text-brand-main">
+                <i data-lucide="info" class="w-5 h-5"></i>
+            </button>
+        </nav>
 
-            <div class="md:col-span-8 border-r border-slate-100 min-h-screen">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-0 md:gap-12 px-0 md:px-6">
 
-                <section class="py-6 px-4 md:px-6 border-b border-slate-100 bg-slate-50/30">
-                    <div class="flex items-center justify-between mb-4">
-                        <h2 class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em]">Active Niches</h2>
+            <div class="md:col-span-8 border-r border-slate-50 py-8 px-6 md:px-0">
+
+                <article class="mb-12">
+                    <header class="flex items-center gap-4 mb-8">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Aris"
+                            class="w-14 h-14 rounded-2xl shadow-sm">
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h3 class="text-lg font-black text-slate-900">Dr. Aris Thorne</h3>
+                                <i data-lucide="check-badge" class="w-5 h-5 text-brand-main"></i>
+                            </div>
+                            <p class="text-[12px] text-slate-400 font-medium tracking-tight">Lead Researcher • 4 hours
+                                ago
+                            </p>
+                        </div>
+                    </header>
+
+                    <div class="prose prose-slate max-w-none">
+                        <p class="text-xl md:text-2xl text-slate-800 leading-relaxed font-semibold mb-6">
+                            If we treat energy as the "Universal Ledger," then every computational cycle is a financial
+                            transaction. The <span class="text-brand-main">#HEAT_SEEM_FC</span> model isn't just an
+                            option;
+                            it's the inevitable evolution of decentralized infrastructure.
+                        </p>
                     </div>
 
-                    <div class="flex overflow-x-auto gap-6 no-scrollbar pb-2">
-                        <div class="flex-shrink-0 text-center group cursor-pointer">
-                            <div
-                                class="w-14 h-14 mx-auto rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-400 group-hover:border-brand-main group-hover:text-brand-main transition-all shadow-sm">
-                                <i data-lucide="zap" class="w-6 h-6"></i>
-                            </div>
-                            <p
-                                class="text-[11px] font-semibold text-slate-500 mt-2 group-hover:text-brand-main transition">
-                                Energy</p>
-                        </div>
-                        <div class="flex-shrink-0 text-center group cursor-pointer">
-                            <div
-                                class="w-14 h-14 mx-auto rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-400 group-hover:border-brand-main group-hover:text-brand-main transition-all shadow-sm">
-                                <i data-lucide="brain" class="w-6 h-6"></i>
-                            </div>
-                            <p
-                                class="text-[11px] font-semibold text-slate-500 mt-2 group-hover:text-brand-main transition">
-                                Philosophy</p>
-                        </div>
+                    <div class="flex items-center gap-8 py-6 border-t border-slate-50 mt-8">
+                        <button
+                            class="flex items-center gap-2 text-xs font-bold text-slate-400 hover:text-red-500 transition"><i
+                                data-lucide="heart" class="w-5 h-5"></i> 1.2k</button>
+                        <button
+                            class="flex items-center gap-2 text-xs font-bold text-slate-400 hover:text-brand-main transition"><i
+                                data-lucide="zap" class="w-5 h-5"></i> 340</button>
+                        <button
+                            class="flex items-center gap-2 text-xs font-bold text-slate-400 hover:text-brand-main transition"><i
+                                data-lucide="share" class="w-5 h-5"></i></button>
                     </div>
-                </section>
+                </article>
 
-                <section>
-                    <article
-                        class="py-8 px-4 md:px-8 border-b border-slate-100 hover:bg-slate-50/30 transition-colors group relative">
-                        <div class="flex flex-col w-full">
+                <section class="space-y-10 pt-8 border-t border-slate-100">
+                    <h3 class="text-[11px] font-black text-slate-400 uppercase tracking-[0.3em] mb-8">The Roundtable
+                    </h3>
 
-                            <header class="flex items-center justify-between mb-5">
-                                <div class="flex items-center gap-3">
-                                    <div class="relative">
-                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Aris"
-                                            class="w-10 h-10 rounded-full border border-slate-100 shadow-sm">
-                                        <span
-                                            class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-brand-main border-2 border-white rounded-full"></span>
-                                    </div>
-                                    <div class="flex flex-col">
-                                        <div class="flex items-center gap-2">
-                                            <h3 class="text-sm font-bold text-slate-900 tracking-tight">Aris Thorne</h3>
-                                            <span
-                                                class="text-[11px] text-slate-400 font-medium tracking-tighter italic">@athorne</span>
-                                        </div>
-                                        <div class="flex items-center gap-2">
-                                            <p class="text-[11px] text-brand-main font-bold uppercase tracking-wider">
-                                                Philosophy</p>
-                                            <span class="text-slate-200 text-[8px]">●</span>
-                                            <span class="text-[11px] text-slate-400">2 hours ago</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="relative">
-                                    <button onclick="toggleThoughtOptions(event, this)"
-                                        class="p-2 text-slate-300 hover:text-slate-600 transition">
-                                        <i data-lucide="more-horizontal" class="w-5 h-5"></i>
-                                    </button>
-                                    <div
-                                        class="thought-options hidden absolute right-0 mt-2 w-48 bg-white border border-slate-100 shadow-xl rounded-xl z-[60]">
-                                        <button
-                                            class="w-full px-4 py-3 text-left text-xs font-semibold text-slate-600 hover:bg-slate-50 flex items-center gap-2"><i
-                                                data-lucide="bookmark" class="w-4 h-4"></i> Save</button>
-                                        <button
-                                            class="w-full px-4 py-3 text-left text-xs font-semibold text-red-500 hover:bg-red-50 flex items-center gap-2 border-t border-slate-50"><i
-                                                data-lucide="alert-circle" class="w-4 h-4"></i> Report</button>
-                                    </div>
-                                </div>
-                            </header>
-
-                            <div class="w-full space-y-4">
-                                <div class="prose prose-slate max-w-none">
-                                    <p class="text-slate-700 leading-relaxed text-[16px] md:text-[17px]">
-                                        Is it possible that we are over-calculating data and under-calculating the
-                                        **energy cost** of truth? If a thought takes 1kWh to compute, is it more
-                                        valuable than a thought that takes 0.01kWh? This is the core of the <span
-                                            class="text-brand-main font-medium">#ComputableEnergy</span> thesis.
-                                    </p>
-                                </div>
-
-                                <div
-                                    class="w-full aspect-[16/9] bg-slate-100 rounded-2xl overflow-hidden border border-slate-200 group-hover:border-slate-300 transition-colors">
-                                    <div
-                                        class="w-full h-full flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
-                                        <i data-lucide="image" class="w-12 h-12 text-slate-200"></i>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <footer class="mt-6 flex items-center justify-between">
-                                <div class="flex items-center gap-8 text-slate-400">
-                                    <button
-                                        class="flex items-center gap-2 text-[12px] font-bold hover:text-red-500 transition group/icon">
-                                        <div class="p-2 group-hover/icon:bg-red-50 rounded-full transition"><i
-                                                data-lucide="heart" class="w-4.5 h-4.5"></i></div>
-                                        <span>124</span>
-                                    </button>
-                                    <button
-                                        class="flex items-center gap-2 text-[12px] font-bold hover:text-brand-main transition group/icon">
-                                        <div class="p-2 group-hover/icon:bg-brand-light rounded-full transition"><i
-                                                data-lucide="message-square" class="w-4.5 h-4.5"></i></div>
-                                        <span>18</span>
-                                    </button>
-                                    <button
-                                        class="flex items-center gap-2 text-[12px] font-bold hover:text-brand-main transition group/icon">
-                                        <div class="p-2 group-hover/icon:bg-brand-light rounded-full transition"><i
-                                                data-lucide="zap" class="w-4.5 h-4.5"></i></div>
-                                        <span>5</span>
-                                    </button>
-                                </div>
-
+                    <div class="flex gap-4 mb-12">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" class="w-10 h-10 rounded-full">
+                        <div
+                            class="flex-1 p-1.5 rounded-2xl border border-slate-200 focus-within:border-brand-main focus-within:ring-4 focus-within:ring-brand-main/5 transition-all">
+                            <textarea rows="2" placeholder="Add your contribution..."
+                                class="w-full bg-transparent border-none focus:ring-0 p-3 text-sm outline-none resize-none"></textarea>
+                            <div class="flex justify-end p-2">
                                 <button
-                                    class="p-2 text-slate-300 hover:text-brand-main hover:bg-brand-light rounded-full transition">
-                                    <i data-lucide="bookmark" class="w-5 h-5"></i>
-                                </button>
-                            </footer>
-
-                        </div>
-                    </article>
-                    <!-- another post -->
-                    <article class="p-4 md:p-8 border-b border-slate-100 hover:bg-slate-50/50 transition-colors group">
-                        <div class="flex items-start gap-4">
-                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Aris"
-                                class="w-11 h-11 rounded-full border border-slate-100">
-
-                            <div class="flex-1">
-                                <div class="flex items-center justify-between mb-2">
-                                    <div class="flex items-center gap-2">
-                                        <h3 class="text-sm font-bold text-slate-900">Aris Thorne</h3>
-                                        <span class="text-slate-300">·</span>
-                                        <p class="text-[12px] text-brand-main font-bold hover:underline cursor-pointer">
-                                            Philosophy</p>
-                                        <span class="text-slate-300">·</span>
-                                        <span class="text-[11px] text-slate-400">2h</span>
-                                    </div>
-                                    <button
-                                        class="opacity-0 group-hover:opacity-100 text-slate-300 hover:text-slate-600 transition">
-                                        <i data-lucide="more-horizontal" class="w-5 h-5"></i>
-                                    </button>
-                                </div>
-
-                                <div class="space-y-4">
-                                    <p class="text-slate-700 leading-relaxed text-[15px]">
-                                        Is it possible that we are over-calculating data and under-calculating the
-                                        **energy
-                                        cost** of truth? If a thought takes 1kWh to compute, is it more valuable than a
-                                        thought that takes 0.01kWh?
-                                    </p>
-                                    <div
-                                        class="w-full aspect-video bg-slate-100 rounded-xl overflow-hidden border border-slate-200">
-                                        <div class="w-full h-full flex items-center justify-center text-slate-300">
-                                            <i data-lucide="image" class="w-10 h-10"></i>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="mt-6 flex items-center gap-8 text-slate-400">
-                                    <button class="flex items-center gap-2 text-[12px] hover:text-red-500 transition">
-                                        <i data-lucide="heart" class="w-4 h-4"></i> 124
-                                    </button>
-                                    <button
-                                        class="flex items-center gap-2 text-[12px] hover:text-brand-main transition">
-                                        <i data-lucide="message-circle" class="w-4 h-4"></i> 18
-                                    </button>
-                                    <button
-                                        class="flex items-center gap-2 text-[12px] hover:text-brand-main transition">
-                                        <i data-lucide="repeat" class="w-4 h-4"></i> 5
-                                    </button>
-                                    <button class="ml-auto hover:text-brand-main transition">
-                                        <i data-lucide="bookmark" class="w-4 h-4"></i>
-                                    </button>
-                                </div>
+                                    class="px-6 py-2 bg-brand-main text-white rounded-xl text-[10px] font-black uppercase tracking-widest shadow-lg shadow-brand-main/20">Contribute</button>
                             </div>
                         </div>
-                    </article>
+                    </div>
+
+                    <div class="flex gap-4 group">
+                        <div class="flex flex-col items-center">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Lisa"
+                                class="w-10 h-10 rounded-full">
+                            <div class="w-px flex-1 bg-slate-100 my-2"></div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="text-sm font-bold text-slate-900 tracking-tight">Lisa Wright</h4>
+                                <span class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">2h
+                                    ago</span>
+                            </div>
+                            <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                                How does this impact the "Housing" (H) component of HEAT SEEM? If the ledger is
+                                universal,
+                                do residents pay for heating or for compute?
+                            </p>
+                        </div>
+                    </div>
                 </section>
             </div>
 
-            <aside class="hidden md:block md:col-span-4 py-8 pr-6 space-y-10">
+            <aside id="thought-sidebar" class="hidden md:block md:col-span-4 py-8 px-6 md:px-0 space-y-10">
 
-                <section>
-                    <div class="flex items-center justify-between mb-4">
-                        <h2 class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em]">New Resources</h2>
-                        <i data-lucide="chevron-right" class="w-4 h-4 text-slate-300"></i>
-                    </div>
-                    <div class="flex gap-4 overflow-x-auto no-scrollbar pb-2">
-                        <div
-                            class="w-48 flex-shrink-0 p-4 bg-slate-50 border border-slate-100 rounded-xl hover:border-brand-main/30 transition-colors cursor-pointer group">
+                <section class="bg-slate-50 rounded-3xl p-6 border border-slate-100">
+                    <h3
+                        class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
+                        <i data-lucide="link" class="w-3.5 h-3.5"></i> PostChain Lineage
+                    </h3>
+
+                    <div class="space-y-0 relative">
+                        <div class="absolute left-4 top-4 bottom-4 w-0.5 bg-slate-200"></div>
+
+                        <div class="relative flex items-center gap-4 pb-8 group">
                             <div
-                                class="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-brand-main mb-3 shadow-sm">
-                                <i data-lucide="file-text" class="w-5 h-5"></i>
+                                class="w-8 h-8 rounded-full bg-white border-2 border-slate-200 flex items-center justify-center z-10">
+                                <div class="w-2 h-2 bg-slate-300 rounded-full"></div>
                             </div>
-                            <p class="text-xs font-bold text-slate-800 line-clamp-2 mb-1 group-hover:text-brand-main">
-                                The
-                                Computable Energy Thesis</p>
-                            <p class="text-[10px] text-slate-400 font-medium italic">By LightMann</p>
+                            <p
+                                class="text-[11px] text-slate-400 font-medium group-hover:text-slate-900 transition-colors cursor-pointer">
+                                Original Thesis on Compute Waste</p>
+                        </div>
+
+                        <div class="relative flex items-center gap-4 pb-8">
+                            <div
+                                class="w-8 h-8 rounded-full bg-brand-main border-4 border-brand-light flex items-center justify-center z-10 shadow-lg shadow-brand-main/20">
+                                <div class="w-2 h-2 bg-white rounded-full"></div>
+                            </div>
+                            <p class="text-[11px] text-brand-main font-black">Current: Universal Energy Ledger</p>
+                        </div>
+
+                        <div class="relative flex items-center gap-4">
+                            <div
+                                class="w-8 h-8 rounded-full bg-white border-2 border-dashed border-slate-200 flex items-center justify-center z-10">
+                                <i data-lucide="plus" class="w-3 h-3 text-slate-300"></i>
+                            </div>
+                            <p class="text-[11px] text-slate-300 italic">Extend this chain...</p>
                         </div>
                     </div>
                 </section>
 
-                <section>
-                    <h2 class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-4">Discover Scholars
-                    </h2>
-                    <div class="space-y-4">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center gap-3">
-                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Lisa"
-                                    class="w-8 h-8 rounded-full">
-                                <span class="text-xs font-bold text-slate-800">Lisa Wright</span>
+                <section class="px-2 space-y-6">
+                    <div>
+                        <h4 class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Island Impact
+                        </h4>
+                        <div class="space-y-4">
+                            <div class="flex justify-between text-xs">
+                                <span class="text-slate-400 font-medium">ZiniCoin Volume</span>
+                                <span class="text-slate-900 font-black">450.00</span>
                             </div>
-                            <button
-                                class="text-[10px] font-bold text-brand-main uppercase hover:underline">Follow</button>
+                            <div class="flex justify-between text-xs">
+                                <span class="text-slate-400 font-medium">Scholarly Reach</span>
+                                <span class="text-slate-900 font-black">12.4k</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 border-t border-slate-50">
+                        <h4 class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Core Niche</h4>
+                        <div class="flex items-center gap-3 p-3 bg-white border border-slate-100 rounded-2xl">
+                            <div class="w-8 h-8 bg-brand-main text-white rounded-lg flex items-center justify-center">
+                                <i data-lucide="zap" class="w-4 h-4"></i>
+                            </div>
+                            <div>
+                                <p class="text-[11px] font-bold text-slate-900">Energy Systems</p>
+                                <p class="text-[9px] text-slate-400 font-bold uppercase tracking-tighter">CE-2025</p>
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores tempore doloremque
+                                officiis dicta pariatur ab cupiditate voluptatum perspiciatis, quidem beatae
+                                voluptatibus nemo dignissimos incidunt adipisci voluptatem culpa aperiam omnis
+                                assumenda?
+                            </div>
                         </div>
                     </div>
                 </section>
 
-                <footer class="text-[10px] text-slate-300 flex flex-wrap gap-x-4 gap-y-2 font-medium">
-                    <span>© 2025 Ksharer</span>
-                    <a href="#" class="hover:text-slate-500">Ethics</a>
-                    <a href="#" class="hover:text-slate-500">Privacy</a>
-                </footer>
             </aside>
-
         </div>
     </main>
 
     <!-- modals -->
+
     <div id="createThoughtModal"
         class="hidden fixed inset-0 z-[150] flex items-end sm:items-center justify-center p-0 sm:p-4">
         <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" onclick="toggleModal('createThoughtModal')">
@@ -610,7 +549,64 @@
 
         // Re-initialize icons just in case
         lucide.createIcons();
+
+        function switchNicheTab(tabName) {
+            // 1. Hide all content sections
+            document.querySelectorAll('.niche-content').forEach(section => {
+                section.classList.add('hidden');
+            });
+
+            // 2. Reset all tab styles to "Inactive"
+            document.querySelectorAll('.niche-tab').forEach(tab => {
+                tab.classList.remove('text-brand-main', 'border-brand-main');
+                tab.classList.add('text-slate-400', 'border-transparent');
+            });
+
+            // 3. Show the target content
+            document.getElementById('content-' + tabName).classList.remove('hidden');
+
+            // 4. Highlight the active tab
+            const activeTab = document.getElementById('tab-' + tabName);
+            activeTab.classList.add('text-brand-main', 'border-brand-main');
+            activeTab.classList.remove('text-slate-400', 'border-transparent');
+        }
+
+        // Niche Sidebar Toggle for Mobile
+        function toggleNicheSidebar() {
+            const sidebar = document.getElementById('nicheSidebar');
+            const isHidden = sidebar.classList.contains('translate-x-full');
+
+            if (isHidden) {
+                sidebar.classList.remove('hidden', 'translate-x-full');
+                sidebar.classList.add('flex');
+            } else {
+                sidebar.classList.add('translate-x-full');
+                // Small delay to allow animation before hiding
+                setTimeout(() => sidebar.classList.add('hidden'), 300);
+            }
+        }
+
+        function switchProfileTab(tabName) {
+            // 1. Hide all profile-content sections
+            document.querySelectorAll('.profile-content').forEach(section => {
+                section.classList.add('hidden');
+            });
+
+            // 2. Reset all profile-tab styles
+            document.querySelectorAll('.profile-tab').forEach(tab => {
+                tab.classList.remove('text-brand-main', 'border-brand-main');
+                tab.classList.add('text-slate-400', 'border-transparent');
+            });
+
+            // 3. Show target and highlight tab
+            document.getElementById('p-content-' + tabName).classList.remove('hidden');
+            const activeTab = document.getElementById('p-tab-' + tabName);
+            activeTab.classList.add('text-brand-main', 'border-brand-main');
+            activeTab.classList.remove('text-slate-400', 'border-transparent');
+        }
     </script>
+
+
 
 </body>
 

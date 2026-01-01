@@ -1,9 +1,15 @@
 from django.urls import path
 
-from apps.core.views import homepage
+from . import views
 
-# Create your views here.
+app_name = 'core'
 
 urlpatterns = [
-    path('', homepage, name='homepage'),
+    path('', views.homepage, name='homepage'),
+    path('feed/', views.feed, name='feed'),
+    path('resources/', views.resources, name='resources'),
+    path('messaging/', views.messaging, name='messaging'),
+    path('notifications/', views.notifications, name='notifications'),
+    path('profile/', views.profile, name='profile'),
+    
 ]

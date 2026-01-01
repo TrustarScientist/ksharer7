@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity Feed | Knowledge Island</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            light: '#ecfdf5',
+                            main: '#10b981',
+                            dark: '#064e3b',
+                            hover: '#059669',
+                        },
+                        surface: '#ffffff',
+                        canvas: '#f8fafc',
+                        border: '#e2e8f0',
+                        muted: '#64748b',
+                        heading: '#0f172a',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #e5e7eb;
+            border-radius: 10px;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="bg-white min-h-screen w-full flex flex-col text-slate-800 font-sans">
+
+    <nav
+        class="fixed top-0 w-full h-16 bg-white border-b border-slate-100 px-4 md:px-8 flex items-center justify-between z-50">
+        <div class="flex items-center flex-1 gap-4">
+            <button onclick="location.href='profile.html'" class="lg:hidden flex items-center">
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix"
+                    class="w-9 h-9 rounded-full bg-brand-light ring-2 ring-brand-main/20">
+            </button>
+            <div class="hidden md:flex items-center gap-2">
+                <div
+                    class="w-8 h-8 bg-brand-main rounded flex items-center justify-center text-white shadow-sm shadow-brand-main/20">
+                    <img class="w-5 h-5" src="https://trustarscientist.github.io/olcwd/ksharer-logo1-no-bg.png">
+                </div>
+                <span class="font-bold text-slate-800 text-sm uppercase tracking-tighter">Knowledge Island</span>
+            </div>
+        </div>
+
+        <div class="flex-1 flex justify-center">
+            <div class="hidden md:flex w-full max-w-md relative">
+                <i data-lucide="search" class="absolute left-3 top-2.5 w-4 h-4 text-slate-400"></i>
+                <input type="text" placeholder="Search..."
+                    class="w-full bg-slate-100 border-none rounded-full py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-brand-main/20 outline-none transition-all">
+            </div>
+        </div>
+
+        <div class="flex-1 flex justify-end items-center gap-6">
+            <button class="md:hidden p-2 text-slate-600"><i data-lucide="search" class="w-6 h-6"></i></button>
+            <div class="hidden md:flex items-center gap-5 text-slate-500">
+                <button title="Messages" class="hover:text-brand-main transition"><i data-lucide="message-square"
+                        class="w-5 h-5"></i></button>
+                <button title="Notifications" class="text-brand-main transition relative">
+                    <i data-lucide="bell" class="w-5 h-5"></i>
+                    <span class="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <aside
+        class="hidden lg:flex fixed left-0 top-16 w-64 h-[calc(100vh-16px)] bg-slate-50 border-r border-slate-100 flex-col p-6 z-40">
+        <nav class="space-y-1">
+            <a href="index.html"
+                class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-white hover:text-brand-main rounded-xl transition">
+                <i data-lucide="layout-grid" class="w-5 h-5"></i> Dashboard
+            </a>
+            <a href="wallet.html"
+                class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-white hover:text-brand-main rounded-xl transition">
+                <i data-lucide="wallet" class="w-5 h-5"></i> My Wallet
+            </a>
+            <a href="notifications.html"
+                class="flex items-center gap-3 px-4 py-3 bg-white text-brand-main rounded-xl shadow-sm font-semibold transition">
+                <i data-lucide="bell" class="w-5 h-5"></i> Notifications
+            </a>
+            <a href="settings.html"
+                class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:bg-white hover:text-brand-main rounded-xl transition">
+                <i data-lucide="settings" class="w-5 h-5"></i> Settings
+            </a>
+        </nav>
+
+        <div class="mt-auto mb-6 p-4 bg-brand-dark rounded-2xl text-white">
+            <p class="text-[9px] uppercase text-brand-main font-bold tracking-widest mb-1">Energy Balance</p>
+            <div class="flex justify-between items-end">
+                <span class="text-xl font-bold italic">2,450.00</span>
+                <span class="text-[9px] opacity-60">KW/h</span>
+            </div>
+        </div>
+    </aside>
+
+    <main class="lg:ml-64 pt-20 pb-24 lg:pb-8 px-4 md:px-8 max-w-4xl">
+        <header class="mb-8">
+            <h1 class="text-2xl font-black text-slate-900 tracking-tight">Notifications</h1>
+            <p class="text-sm text-slate-500">Stay updated with your niche activities.</p>
+        </header>
+
+        <div class="space-y-3">
+            <div
+                class="bg-brand-light/20 border border-brand-main/10 rounded-2xl p-4 flex gap-4 items-start relative overflow-hidden group hover:bg-brand-light/40 transition-colors cursor-pointer">
+                <div class="w-1 h-full bg-brand-main absolute left-0 top-0"></div>
+                <div
+                    class="w-10 h-10 bg-white rounded-xl flex items-center justify-center text-brand-main shadow-sm shrink-0">
+                    <i data-lucide="zap" class="w-5 h-5"></i>
+                </div>
+                <div class="flex-1">
+                    <div class="flex justify-between items-start">
+                        <h4 class="text-sm font-bold text-slate-900">Energy Top-up</h4>
+                        <span class="text-[10px] font-bold text-brand-main uppercase">New</span>
+                    </div>
+                    <p class="text-sm text-slate-600 mt-0.5">You received <span class="font-bold text-brand-dark">50.00
+                            Zini</span> for your contribution to the <span class="underline">Housing Niche</span>.</p>
+                    <p class="text-[10px] text-slate-400 mt-2 font-medium">2 minutes ago</p>
+                </div>
+            </div>
+
+            <div
+                class="bg-white border border-slate-100 rounded-2xl p-4 flex gap-4 items-start hover:bg-slate-50 transition-colors cursor-pointer group">
+                <div class="w-10 h-10 bg-slate-100 rounded-xl overflow-hidden shrink-0">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sasha" alt="Avatar">
+                </div>
+                <div class="flex-1">
+                    <h4 class="text-sm font-bold text-slate-900">Sasha V.</h4>
+                    <p class="text-sm text-slate-600 mt-0.5">Wants to collaborate on your latest blueprint "Computable
+                        Energy Systems v2".</p>
+                    <div class="flex gap-2 mt-3">
+                        <button
+                            class="bg-brand-main text-white px-4 py-1.5 rounded-lg text-[11px] font-black uppercase tracking-wider hover:bg-brand-hover transition">Accept</button>
+                        <button
+                            class="bg-slate-100 text-slate-500 px-4 py-1.5 rounded-lg text-[11px] font-black uppercase tracking-wider hover:bg-slate-200 transition">Decline</button>
+                    </div>
+                    <p class="text-[10px] text-slate-400 mt-2 font-medium">1 hour ago</p>
+                </div>
+            </div>
+
+            <div
+                class="bg-white border border-slate-100 rounded-2xl p-4 flex gap-4 items-start hover:bg-slate-50 transition-colors cursor-pointer">
+                <div class="w-10 h-10 bg-slate-50 rounded-xl flex items-center justify-center text-slate-400 shrink-0">
+                    <i data-lucide="shield-check" class="w-5 h-5"></i>
+                </div>
+                <div class="flex-1">
+                    <h4 class="text-sm font-bold text-slate-900">Security Alert</h4>
+                    <p class="text-sm text-slate-600 mt-0.5">Your account was accessed from a new device in Lagos,
+                        Nigeria.</p>
+                    <p class="text-[10px] text-slate-400 mt-2 font-medium">Yesterday at 4:30 PM</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <nav
+        class="md:hidden fixed bottom-0 w-full h-16 bg-white border-t border-slate-100 flex items-center justify-around z-50 px-2">
+        <a href="index.html" class="flex flex-col items-center text-slate-400">
+            <i data-lucide="home" class="w-6 h-6"></i>
+        </a>
+        <a href="library.html" class="flex flex-col items-center text-slate-400">
+            <i data-lucide="library" class="w-6 h-6"></i>
+        </a>
+        <a href="#"
+            class="flex flex-col items-center text-white bg-brand-main p-2 rounded-xl shadow-lg shadow-brand-main/40">
+            <i data-lucide="plus-square" class="w-6 h-6"></i>
+        </a>
+        <a href="messages.html" class="flex flex-col items-center text-slate-400">
+            <i data-lucide="message-circle" class="w-6 h-6"></i>
+        </a>
+        <a href="notifications.html" class="flex flex-col items-center text-brand-main relative">
+            <i data-lucide="bell" class="w-6 h-6"></i>
+            <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full border border-white"></span>
+        </a>
+    </nav>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

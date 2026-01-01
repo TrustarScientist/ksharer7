@@ -10,9 +10,7 @@ User = get_user_model()
 from .forms import LoginForm, RegisterForm
 from .services import login_user, register_user, account_activation_token
 
-@login_required
-def home(request):
-    return render(request, 'accounts/home.html')
+
 
 def login_view(request):
     form = LoginForm(request.POST or None)
@@ -31,7 +29,7 @@ def login_view(request):
         else:
             form.add_error(None, "Invalid credentials")
 
-    return render(request, 'accounts/login.html', {'form': form})
+    return render(request, 'core/feed.html', {'form': form})
 
 
 

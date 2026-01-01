@@ -207,14 +207,3 @@ KSHARER is not just a platform.
 It’s an ecosystem for sharing, learning, and growing together.
 
 
----
-
-### Want next?
-I can:
-- Tighten this for **investor-facing README**
-- Rewrite it for **open-source positioning**
-- Create a **CONTRIBUTING.md**
-- Draft a **SECURITY.md**
-- Write a **pitch-style README (landing-page tone)**
-
-Just say the word.
