@@ -25,7 +25,7 @@ def create_thought(request):
         content=content,
         niche=niche
     )
-    print(thought)
+    
 
     return JsonResponse({
         "success": True,

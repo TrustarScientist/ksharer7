@@ -57,6 +57,12 @@
 </head>
 
 <body class="bg-white min-h-screen w-full flex flex-col text-slate-800 font-sans">
+    <!-- Toast Notification Container -->
+    <!-- Place this as a direct child of <body> -->
+    <div id="toast-container" class="fixed top-safe left-1/2 -translate-x-1/2 w-[92%] max-w-sm 
+                sm:top-auto sm:bottom-8 sm:right-8 sm:left-auto sm:translate-x-0 
+                z-[99999] flex flex-col gap-3 pointer-events-none">
+    </div>
 
     <div id="nav-wrapper" class="font-sans">
         <nav
@@ -148,6 +154,8 @@
                 <h3 class="font-bold text-slate-800">Felix Mann</h3>
                 <p class="text-[10px] text-brand-main font-bold uppercase tracking-widest">Computable Energy Expert</p>
             </div>
+            <!-- toast container -->
+            
 
             <nav class="space-y-1">
                 <a href="#"
@@ -538,13 +546,54 @@
                     .then(res => res.json())
                     .then(data => {
                         if (data.success) {
-                            console.log("Thought created", data.thought_id);
+                            showToast("Thought posted to the Island!", "success");
+                            // console.log("Thought created", data.thought_id);
                             toggleModal("createThoughtModal");
                         } else {
-                            alert(data.error);
+                            showToast(data.errors || "Failed to post thought.", "error");
                         }
+                    })
+                    .catch(err => {
+                        showToast("An error occurred. Please try again.", "error");
+                        // console.error("Error:", err);
                     });
             });
+
+        
+        // toast notification function
+        function showToast(message, type = 'success') {
+                const container = document.getElementById('toast-container');
+                const toast = document.createElement('div');
+
+                const bgColor = type === 'success' ? 'bg-emerald-600' : 'bg-rose-600';
+
+                // pointer-events-auto allows users to click the 'X' button
+                toast.className = `${bgColor} text-white px-5 py-3 rounded-2xl shadow-2xl 
+                       flex items-center justify-between gap-4 pointer-events-auto
+                       transition-all duration-500 transform opacity-0 -translate-y-10 sm:translate-y-10`;
+
+                toast.innerHTML = `
+        <div class="flex items-center gap-3">
+            <span class="text-sm font-bold">${message}</span>
+        </div>
+        <button onclick="this.parentElement.remove()" class="shrink-0 p-1 bg-white/20 rounded-full">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+    `;
+
+                container.prepend(toast); // Newest toasts appear at the top
+
+                // Trigger Animation
+                requestAnimationFrame(() => {
+                    toast.classList.remove('opacity-0', '-translate-y-10', 'sm:translate-y-10');
+                });
+
+                // Auto-dismiss
+                setTimeout(() => {
+                    toast.classList.add('opacity-0', 'scale-95');
+                    setTimeout(() => toast.remove(), 500);
+                }, 4000);
+            }
 
 
         
