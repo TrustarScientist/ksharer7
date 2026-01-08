@@ -13,17 +13,16 @@
                 extend: {
                     colors: {
                         brand: {
-                            light: '#ecfdf5',  // Very faint green tint
-                            main: '#10b981',   // Your Logo Green
-                            dark: '#064e3b',   // Deep Forest
+                            light: '#ecfdf5',
+                            main: '#10b981',
+                            dark: '#064e3b',
                             hover: '#059669',
                         },
-                        // Professional Neutrals (JetBrains/Reuters Style)
-                        surface: '#ffffff',    // Pure White
-                        canvas: '#f8fafc',     // Very light slate
-                        border: '#e2e8f0',     // Soft border
-                        muted: '#64748b',      // Slate 500
-                        heading: '#0f172a',    // Slate 900
+                        surface: '#ffffff',
+                        canvas: '#f8fafc',
+                        border: '#e2e8f0',
+                        muted: '#64748b',
+                        heading: '#0f172a',
                     },
                     fontFamily: {
                         sans: ['Inter', '-apple-system', 'sans-serif'],
@@ -34,15 +33,10 @@
     </script>
 
     <script src="https://unpkg.com/htmx.org@1.9.10"></script>
-
     <script src="https://unpkg.com/lucide@latest"></script>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
     <style>
-        /* Custom Scrollbar for a cleaner look */
         ::-webkit-scrollbar {
             width: 6px;
         }
@@ -56,8 +50,8 @@
             border-radius: 10px;
         }
 
-        ::-webkit-scrollbar-thumb:hover {
-            background: #d1d5db;
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
         }
     </style>
 </head>
@@ -65,46 +59,54 @@
 <body class="bg-white min-h-screen w-full flex flex-col text-slate-800 font-sans">
 
     <div id="nav-wrapper" class="font-sans">
-
         <nav
             class="fixed top-0 w-full h-16 bg-white border-b border-slate-100 px-4 md:px-8 flex items-center justify-between z-50">
 
             <div class="flex items-center flex-1 gap-4">
                 <button onclick="toggleModal('profileModal')" class="lg:hidden flex items-center">
                     <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="Profile"
-                        class="w-9 h-9 rounded-full bg-brand-light ring-2 ring-brand-main/20 hover:ring-brand-main transition-all">
+                        class="w-9 h-9 rounded-full bg-brand-light ring-2 ring-brand-main/20">
                 </button>
 
                 <div class="hidden md:flex items-center gap-2">
-                    <div
-                        class="w-8 h-8 bg-brand-main rounded flex items-center justify-center text-white shadow-sm shadow-brand-main/20">
-                        <!-- <i data-lucide="mountain" class="w-5 h-5"></i> -->
+                    <div class="w-8 h-8 bg-brand-main rounded flex items-center justify-center text-white shadow-sm">
                         <img class="w-5 h-5" src="https://trustarscientist.github.io/olcwd/ksharer-logo1-no-bg.png">
                     </div>
-                    <span class="font-bold text-slate-800 text-sm uppercase tracking-tighter">Knowledge Island</span>
+                    <span class="font-bold text-slate-800 text-sm uppercase tracking-tighter">Ksharer</span>
                 </div>
             </div>
 
-            <div class="flex-1 flex justify-center">
-                <div class="md:hidden flex items-center gap-2">
-                    <div class="w-8 h-8 bg-brand-main rounded flex items-center justify-center text-white">
-                        <i data-lucide="mountain" class="w-5 h-5"></i>
-                    </div>
+            <div class="flex-1 flex justify-center items-center gap-1 md:gap-4">
+                <div class="hidden md:flex items-center gap-2 mr-4">
+                    <a href="#" class="p-2 text-brand-main hover:bg-brand-light rounded-xl transition" title="Home">
+                        <i data-lucide="home" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#"
+                        class="p-2 text-slate-500 hover:text-brand-main hover:bg-brand-light rounded-xl transition"
+                        title="Resources">
+                        <i data-lucide="library" class="w-5 h-5"></i>
+                    </a>
                 </div>
 
-                <div class="hidden md:flex w-full max-w-md relative">
+                <div class="hidden md:flex w-full max-w-xs relative">
                     <i data-lucide="search" class="absolute left-3 top-2.5 w-4 h-4 text-slate-400"></i>
-                    <input type="text" placeholder="Search Knowledge Island..."
-                        class="w-full bg-slate-100 border-none rounded-full py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-brand-main/20 transition-all outline-none">
+                    <input type="text" placeholder="Search..."
+                        class="w-full bg-slate-100 border-none rounded-full py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-brand-main/20 outline-none">
                 </div>
             </div>
 
-            <div class="flex-1 flex justify-end items-center gap-6">
+            <div class="flex-1 flex justify-end items-center gap-2 md:gap-6">
+                <button onclick="toggleModal('createThoughtModal')" title="Create Post"
+                    class="hidden md:flex items-center gap-2 bg-brand-main hover:bg-brand-hover text-white px-4 py-2 rounded-full text-xs font-bold transition shadow-md shadow-brand-main/20">
+                    <i data-lucide="plus-circle" class="w-4 h-4"></i>
+                    <span>Post</span>
+                </button>
+
                 <button onclick="toggleModal('searchModal')" class="md:hidden p-2 text-slate-600">
                     <i data-lucide="search" class="w-6 h-6"></i>
                 </button>
 
-                <div class="hidden md:flex items-center gap-5 text-slate-500">
+                <div class="hidden md:flex items-center gap-4 text-slate-500">
                     <button title="Messages" class="hover:text-brand-main transition"><i data-lucide="message-square"
                             class="w-5 h-5"></i></button>
                     <button title="Notifications" class="hover:text-brand-main transition relative">
@@ -112,32 +114,22 @@
                         <span
                             class="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
                     </button>
-
-                    <div class="hidden lg:block border-l pl-5 border-slate-200">
-                        <span class="text-slate-400 text-xs font-medium italic leading-none">Powered by</span>
-                        <p class="text-brand-dark font-bold text-xs uppercase tracking-widest leading-tight">Ksharer
-                            System
-                        </p>
-                    </div>
                 </div>
             </div>
         </nav>
 
         <nav
             class="md:hidden fixed bottom-0 w-full h-16 bg-white border-t border-slate-100 flex items-center justify-around z-50 px-2">
-            <a href="#" class="flex flex-col items-center text-brand-main">
-                <i data-lucide="home" class="w-6 h-6"></i>
-            </a>
-            <a href="#" class="flex flex-col items-center text-slate-400">
-                <i data-lucide="library" class="w-6 h-6"></i>
-            </a>
+            <a href="#" class="flex flex-col items-center text-brand-main"><i data-lucide="home"
+                    class="w-6 h-6"></i></a>
+            <a href="#" class="flex flex-col items-center text-slate-400"><i data-lucide="library"
+                    class="w-6 h-6"></i></a>
             <a href="#" onclick="toggleModal('createThoughtModal')"
                 class="flex flex-col items-center text-slate-100 bg-brand-main p-2 rounded-xl shadow-lg shadow-brand-main/40">
                 <i data-lucide="plus-square" class="w-6 h-6"></i>
             </a>
-            <a href="#" class="flex flex-col items-center text-slate-400">
-                <i data-lucide="message-circle" class="w-6 h-6"></i>
-            </a>
+            <a href="#" class="flex flex-col items-center text-slate-400"><i data-lucide="message-circle"
+                    class="w-6 h-6"></i></a>
             <a href="#" class="flex flex-col items-center text-slate-400 relative">
                 <i data-lucide="bell" class="w-6 h-6"></i>
                 <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full border border-white"></span>
@@ -148,7 +140,7 @@
             class="hidden lg:flex fixed left-0 top-16 w-64 h-[calc(100vh-16px)] bg-slate-50 border-r border-slate-100 flex-col p-6 z-40">
             <div class="flex flex-col items-center text-center mb-8 pt-4">
                 <div class="relative mb-3">
-                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="Profile"
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix"
                         class="w-20 h-20 rounded-2xl bg-white shadow-sm ring-4 ring-white">
                     <span
                         class="absolute bottom-1 right-1 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></span>
@@ -176,442 +168,388 @@
                 </a>
             </nav>
 
-            <div class="mt-auto mb-6 p-4 bg-brand-dark rounded-2xl text-white shadow-lg shadow-brand-dark/10">
+            <div class="mt-auto mb-6 p-4 bg-brand-dark rounded-2xl text-white">
                 <div class="flex justify-between items-center mb-2">
                     <p class="text-[9px] uppercase text-brand-main font-bold tracking-widest">Energy Balance</p>
                     <i data-lucide="zap" class="w-3 h-3 text-brand-main"></i>
                 </div>
                 <div class="flex justify-between items-end">
-                    <span class="text-xl font-bold italic tracking-tight">2,450.00</span>
+                    <span class="text-xl font-bold italic">2,450.00</span>
                     <span class="text-[9px] opacity-60 font-medium">KW/h</span>
                 </div>
             </div>
         </aside>
-
     </div>
 
     <div id="profileModal"
-        class="hidden fixed inset-0 z-[100] bg-slate-900/40 backdrop-blur-sm flex justify-center items-end sm:items-center p-4">
-        <div
-            class="bg-white w-full max-w-md rounded-t-3xl sm:rounded-3xl shadow-2xl overflow-hidden transform transition-all">
+        class="hidden fixed inset-0 z-[100] bg-slate-900/40 backdrop-blur-sm flex justify-center items-end sm:items-center p-4"
+        onclick="if(event.target == this) toggleModal('profileModal')">
+        <div class="bg-white w-full max-w-md rounded-t-3xl sm:rounded-3xl shadow-2xl overflow-hidden">
             <div class="p-6 bg-brand-dark text-white flex justify-between items-start">
                 <div class="flex items-center gap-4">
                     <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix"
                         class="w-14 h-14 rounded-2xl bg-white/10 ring-2 ring-white/20">
                     <div>
-                        <h3 class="font-bold text-lg leading-none">Felix Mann</h3>
-                        <p class="text-xs text-brand-main mt-1 font-medium italic">Contributor Lvl 1</p>
+                        <h3 class="font-bold text-lg">Felix Mann</h3>
+                        <p class="text-xs text-brand-main italic">Contributor Lvl 1</p>
                     </div>
                 </div>
                 <button onclick="toggleModal('profileModal')"
-                    class="p-2 bg-white/10 rounded-full hover:bg-white/20 transition">
-                    <i data-lucide="x" class="w-5 h-5"></i>
-                </button>
+                    class="p-2 bg-white/10 rounded-full hover:bg-white/20 transition"><i data-lucide="x"
+                        class="w-5 h-5"></i></button>
             </div>
             <div class="p-6 grid grid-cols-2 gap-4">
                 <div
-                    class="p-4 bg-slate-50 rounded-2xl flex flex-col items-center hover:bg-brand-light transition-colors group cursor-pointer">
+                    class="p-4 bg-slate-50 rounded-2xl flex flex-col items-center hover:bg-brand-light transition group cursor-pointer">
                     <i data-lucide="wallet" class="w-6 h-6 text-brand-main mb-2"></i>
                     <span class="text-xs font-bold text-slate-700">Wallet</span>
                 </div>
                 <div
-                    class="p-4 bg-slate-50 rounded-2xl flex flex-col items-center hover:bg-brand-light transition-colors group cursor-pointer">
+                    class="p-4 bg-slate-50 rounded-2xl flex flex-col items-center hover:bg-brand-light transition group cursor-pointer">
                     <i data-lucide="layers" class="w-6 h-6 text-brand-main mb-2"></i>
                     <span class="text-xs font-bold text-slate-700">My Niches</span>
-                </div>
-                <div
-                    class="p-4 bg-slate-50 rounded-2xl flex flex-col items-center hover:bg-brand-light transition-colors group cursor-pointer">
-                    <i data-lucide="settings" class="w-6 h-6 text-brand-main mb-2"></i>
-                    <span class="text-xs font-bold text-slate-700">Settings</span>
-                </div>
-                <div
-                    class="p-4 bg-slate-50 rounded-2xl flex flex-col items-center hover:bg-red-50 transition-colors group cursor-pointer">
-                    <i data-lucide="log-out" class="w-6 h-6 text-red-400 mb-2"></i>
-                    <span class="text-xs font-bold text-slate-700">Logout</span>
                 </div>
             </div>
         </div>
     </div>
 
+    <div id="createThoughtModal"
+        class="hidden fixed inset-0 z-[150] flex items-end sm:items-center justify-center p-0 sm:p-4">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="toggleModal('createThoughtModal')">
+        </div>
+        <div
+            class="relative bg-white w-full max-w-lg rounded-t-[2rem] sm:rounded-3xl shadow-2xl overflow-hidden animate-in slide-in-from-bottom duration-300">
+            <div class="px-6 py-4 border-b border-slate-50 flex items-center justify-between">
+                <h2 class="text-sm font-bold text-slate-800 uppercase tracking-widest">Share a Thought</h2>
+                <button onclick="toggleModal('createThoughtModal')"
+                    class="p-2 hover:bg-slate-50 rounded-full transition text-slate-400"><i data-lucide="x"
+                        class="w-5 h-5"></i></button>
+            </div>
+            <div class="p-6 space-y-6">
+                <form action="" id="paf">
+
+                    {% csrf_token %}
+
+                    <!-- <div>
+                        <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-3">Select
+                            Niche</label>
+                        <div class="flex gap-3 overflow-x-auto no-scrollbar pb-2">
+                            <label class="flex-shrink-0 cursor-pointer"><input type="radio" name="niche" value="Philosophy" class="hidden peer" checked>
+                                <div
+                                    class="px-4 py-2 rounded-full border border-slate-200 text-xs font-bold peer-checked:border-brand-main peer-checked:bg-brand-light peer-checked:text-brand-main">
+                                    Philosophy</div>
+                            </label>
+                            <label class="flex-shrink-0 cursor-pointer"><input type="radio" name="niche" value="Energy" class="hidden peer">
+                                <div
+                                    class="px-4 py-2 rounded-full border border-slate-200 text-xs font-bold peer-checked:border-brand-main peer-checked:bg-brand-light peer-checked:text-brand-main">
+                                    Energy</div>
+                            </label>
+                        </div>
+                    </div> -->
+                    <textarea name="content" rows="5" placeholder="What's on your mind? Use #tags..."
+                        class="w-full text-lg border-none focus:ring-0 resize-none" required></textarea>
+                    <div class="flex items-center justify-between pt-4 border-t border-slate-50">
+                        <div class="flex items-center gap-4 text-slate-400">
+                            <button class="hover:text-brand-main"><i data-lucide="image" class="w-5 h-5"></i></button>
+                            <button class="hover:text-brand-main"><i data-lucide="link-2" class="w-5 h-5"></i></button>
+                        </div>
+                        <button type="submit"
+                            class="bg-brand-main hover:bg-brand-hover text-white px-8 py-2.5 rounded-full font-bold text-sm shadow-lg shadow-brand-main/20 transition transform active:scale-95">Post
+                            to Island</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- search modal -->
     <div id="searchModal"
-        class="hidden fixed inset-0 z-[100] bg-slate-900/60 backdrop-blur-md flex justify-center items-start p-4">
+        class="hidden fixed inset-0 z-[100] bg-slate-900/60 backdrop-blur-md flex justify-center items-start p-4"
+        onclick="if(event.target == this) toggleModal('searchModal')">
         <div
             class="bg-white w-full max-w-xl mt-4 rounded-3xl shadow-2xl overflow-hidden transform transition-all animate-in slide-in-from-top duration-300">
             <div class="p-4 flex items-center gap-3 border-b border-slate-100">
                 <i data-lucide="search" class="w-5 h-5 text-brand-main ml-2"></i>
                 <input type="text" id="mobileSearchInput" placeholder="Search Niches, People, or Knowledge..."
-                    class="w-full py-3 bg-transparent text-slate-800 placeholder:text-slate-400 focus:outline-none text-lg">
+                    class="w-full py-3 bg-transparent text-slate-800 focus:outline-none text-lg">
                 <button onclick="toggleModal('searchModal')"
                     class="p-2 hover:bg-slate-100 rounded-full transition text-slate-400">
                     <i data-lucide="x" class="w-6 h-6"></i>
                 </button>
             </div>
-
-            <div class="p-4 max-h-[60vh] overflow-y-auto">
-                <p class="text-[10px] uppercase tracking-widest text-slate-400 font-bold mb-4 px-2">Popular Niches</p>
-                <div class="space-y-2">
-                    <div class="flex items-center gap-3 p-3 hover:bg-brand-light rounded-2xl cursor-pointer transition">
-                        <div
-                            class="w-10 h-10 bg-white shadow-sm border border-slate-100 rounded-xl flex items-center justify-center text-brand-main">
-                            <i data-lucide="zap" class="w-5 h-5"></i>
-                        </div>
-                        <div>
-                            <p class="text-sm font-bold text-slate-700">Computable Energy</p>
-                            <p class="text-[10px] text-slate-400">4.2k members</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-3 p-3 hover:bg-brand-light rounded-2xl cursor-pointer transition">
-                        <div
-                            class="w-10 h-10 bg-white shadow-sm border border-slate-100 rounded-xl flex items-center justify-center text-brand-main">
-                            <i data-lucide="heart-pulse" class="w-5 h-5"></i>
-                        </div>
-                        <div>
-                            <p class="text-sm font-bold text-slate-700">Medical Advancements</p>
-                            <p class="text-[10px] text-slate-400">1.8k members</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-slate-50 p-4 text-center">
-                <p class="text-[10px] text-slate-400">Press <span class="font-bold">Enter</span> to see all results</p>
-            </div>
         </div>
     </div>
 
-    <!-- main content -->
+    <!-- main content start -->
     <main class="pt-16 pb-20 md:pb-0 lg:pl-64 min-h-screen bg-white">
 
-        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-0 md:gap-8">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-0 md:gap-8">
 
-            <div class="md:col-span-8 border-r border-slate-100 min-h-screen">
+        <div class="md:col-span-8 border-r border-slate-100 min-h-screen">
 
-                <section class="py-6 px-4 md:px-6 border-b border-slate-100 bg-slate-50/30">
-                    <div class="flex items-center justify-between mb-4">
-                        <h2 class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em]">Active Niches</h2>
-                    </div>
+            <section class="py-6 px-4 md:px-6 border-b border-slate-100 bg-slate-50/30">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em]">Active Niches</h2>
+                </div>
 
-                    <div class="flex overflow-x-auto gap-6 no-scrollbar pb-2">
-                        <div class="flex-shrink-0 text-center group cursor-pointer">
-                            <div
-                                class="w-14 h-14 mx-auto rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-400 group-hover:border-brand-main group-hover:text-brand-main transition-all shadow-sm">
-                                <i data-lucide="zap" class="w-6 h-6"></i>
-                            </div>
-                            <p
-                                class="text-[11px] font-semibold text-slate-500 mt-2 group-hover:text-brand-main transition">
-                                Energy</p>
-                        </div>
-                        <div class="flex-shrink-0 text-center group cursor-pointer">
-                            <div
-                                class="w-14 h-14 mx-auto rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-400 group-hover:border-brand-main group-hover:text-brand-main transition-all shadow-sm">
-                                <i data-lucide="brain" class="w-6 h-6"></i>
-                            </div>
-                            <p
-                                class="text-[11px] font-semibold text-slate-500 mt-2 group-hover:text-brand-main transition">
-                                Philosophy</p>
-                        </div>
-                    </div>
-                </section>
-
-                <section>
-                    <article
-                        class="py-8 px-4 md:px-8 border-b border-slate-100 hover:bg-slate-50/30 transition-colors group relative">
-                        <div class="flex flex-col w-full">
-
-                            <header class="flex items-center justify-between mb-5">
-                                <div class="flex items-center gap-3">
-                                    <div class="relative">
-                                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Aris"
-                                            class="w-10 h-10 rounded-full border border-slate-100 shadow-sm">
-                                        <span
-                                            class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-brand-main border-2 border-white rounded-full"></span>
-                                    </div>
-                                    <div class="flex flex-col">
-                                        <div class="flex items-center gap-2">
-                                            <h3 class="text-sm font-bold text-slate-900 tracking-tight">Aris Thorne</h3>
-                                            <span
-                                                class="text-[11px] text-slate-400 font-medium tracking-tighter italic">@athorne</span>
-                                        </div>
-                                        <div class="flex items-center gap-2">
-                                            <p class="text-[11px] text-brand-main font-bold uppercase tracking-wider">
-                                                Philosophy</p>
-                                            <span class="text-slate-200 text-[8px]">●</span>
-                                            <span class="text-[11px] text-slate-400">2 hours ago</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="relative">
-                                    <button onclick="toggleThoughtOptions(event, this)"
-                                        class="p-2 text-slate-300 hover:text-slate-600 transition">
-                                        <i data-lucide="more-horizontal" class="w-5 h-5"></i>
-                                    </button>
-                                    <div
-                                        class="thought-options hidden absolute right-0 mt-2 w-48 bg-white border border-slate-100 shadow-xl rounded-xl z-[60]">
-                                        <button
-                                            class="w-full px-4 py-3 text-left text-xs font-semibold text-slate-600 hover:bg-slate-50 flex items-center gap-2"><i
-                                                data-lucide="bookmark" class="w-4 h-4"></i> Save</button>
-                                        <button
-                                            class="w-full px-4 py-3 text-left text-xs font-semibold text-red-500 hover:bg-red-50 flex items-center gap-2 border-t border-slate-50"><i
-                                                data-lucide="alert-circle" class="w-4 h-4"></i> Report</button>
-                                    </div>
-                                </div>
-                            </header>
-
-                            <div class="w-full space-y-4">
-                                <div class="prose prose-slate max-w-none">
-                                    <p class="text-slate-700 leading-relaxed text-[16px] md:text-[17px]">
-                                        Is it possible that we are over-calculating data and under-calculating the
-                                        **energy cost** of truth? If a thought takes 1kWh to compute, is it more
-                                        valuable than a thought that takes 0.01kWh? This is the core of the <span
-                                            class="text-brand-main font-medium">#ComputableEnergy</span> thesis.
-                                    </p>
-                                </div>
-
-                                <div
-                                    class="w-full aspect-[16/9] bg-slate-100 rounded-2xl overflow-hidden border border-slate-200 group-hover:border-slate-300 transition-colors">
-                                    <div
-                                        class="w-full h-full flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
-                                        <i data-lucide="image" class="w-12 h-12 text-slate-200"></i>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <footer class="mt-6 flex items-center justify-between">
-                                <div class="flex items-center gap-8 text-slate-400">
-                                    <button
-                                        class="flex items-center gap-2 text-[12px] font-bold hover:text-red-500 transition group/icon">
-                                        <div class="p-2 group-hover/icon:bg-red-50 rounded-full transition"><i
-                                                data-lucide="heart" class="w-4.5 h-4.5"></i></div>
-                                        <span>124</span>
-                                    </button>
-                                    <button
-                                        class="flex items-center gap-2 text-[12px] font-bold hover:text-brand-main transition group/icon">
-                                        <div class="p-2 group-hover/icon:bg-brand-light rounded-full transition"><i
-                                                data-lucide="message-square" class="w-4.5 h-4.5"></i></div>
-                                        <span>18</span>
-                                    </button>
-                                    <button
-                                        class="flex items-center gap-2 text-[12px] font-bold hover:text-brand-main transition group/icon">
-                                        <div class="p-2 group-hover/icon:bg-brand-light rounded-full transition"><i
-                                                data-lucide="zap" class="w-4.5 h-4.5"></i></div>
-                                        <span>5</span>
-                                    </button>
-                                </div>
-
-                                <button
-                                    class="p-2 text-slate-300 hover:text-brand-main hover:bg-brand-light rounded-full transition">
-                                    <i data-lucide="bookmark" class="w-5 h-5"></i>
-                                </button>
-                            </footer>
-
-                        </div>
-                    </article>
-                    <!-- another post -->
-                    <article class="p-4 md:p-8 border-b border-slate-100 hover:bg-slate-50/50 transition-colors group">
-                        <div class="flex items-start gap-4">
-                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Aris"
-                                class="w-11 h-11 rounded-full border border-slate-100">
-
-                            <div class="flex-1">
-                                <div class="flex items-center justify-between mb-2">
-                                    <div class="flex items-center gap-2">
-                                        <h3 class="text-sm font-bold text-slate-900">Aris Thorne</h3>
-                                        <span class="text-slate-300">·</span>
-                                        <p class="text-[12px] text-brand-main font-bold hover:underline cursor-pointer">
-                                            Philosophy</p>
-                                        <span class="text-slate-300">·</span>
-                                        <span class="text-[11px] text-slate-400">2h</span>
-                                    </div>
-                                    <button
-                                        class="opacity-0 group-hover:opacity-100 text-slate-300 hover:text-slate-600 transition">
-                                        <i data-lucide="more-horizontal" class="w-5 h-5"></i>
-                                    </button>
-                                </div>
-
-                                <div class="space-y-4">
-                                    <p class="text-slate-700 leading-relaxed text-[15px]">
-                                        Is it possible that we are over-calculating data and under-calculating the
-                                        **energy
-                                        cost** of truth? If a thought takes 1kWh to compute, is it more valuable than a
-                                        thought that takes 0.01kWh?
-                                    </p>
-                                    <div
-                                        class="w-full aspect-video bg-slate-100 rounded-xl overflow-hidden border border-slate-200">
-                                        <div class="w-full h-full flex items-center justify-center text-slate-300">
-                                            <i data-lucide="image" class="w-10 h-10"></i>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="mt-6 flex items-center gap-8 text-slate-400">
-                                    <button class="flex items-center gap-2 text-[12px] hover:text-red-500 transition">
-                                        <i data-lucide="heart" class="w-4 h-4"></i> 124
-                                    </button>
-                                    <button
-                                        class="flex items-center gap-2 text-[12px] hover:text-brand-main transition">
-                                        <i data-lucide="message-circle" class="w-4 h-4"></i> 18
-                                    </button>
-                                    <button
-                                        class="flex items-center gap-2 text-[12px] hover:text-brand-main transition">
-                                        <i data-lucide="repeat" class="w-4 h-4"></i> 5
-                                    </button>
-                                    <button class="ml-auto hover:text-brand-main transition">
-                                        <i data-lucide="bookmark" class="w-4 h-4"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-                </section>
-            </div>
-
-            <aside class="hidden md:block md:col-span-4 py-8 pr-6 space-y-10">
-
-                <section>
-                    <div class="flex items-center justify-between mb-4">
-                        <h2 class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em]">New Resources</h2>
-                        <i data-lucide="chevron-right" class="w-4 h-4 text-slate-300"></i>
-                    </div>
-                    <div class="flex gap-4 overflow-x-auto no-scrollbar pb-2">
+                <div class="flex overflow-x-auto gap-6 no-scrollbar pb-2">
+                    <div class="flex-shrink-0 text-center group cursor-pointer">
                         <div
-                            class="w-48 flex-shrink-0 p-4 bg-slate-50 border border-slate-100 rounded-xl hover:border-brand-main/30 transition-colors cursor-pointer group">
-                            <div
-                                class="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-brand-main mb-3 shadow-sm">
-                                <i data-lucide="file-text" class="w-5 h-5"></i>
-                            </div>
-                            <p class="text-xs font-bold text-slate-800 line-clamp-2 mb-1 group-hover:text-brand-main">
-                                The
-                                Computable Energy Thesis</p>
-                            <p class="text-[10px] text-slate-400 font-medium italic">By LightMann</p>
+                            class="w-14 h-14 mx-auto rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-400 group-hover:border-brand-main group-hover:text-brand-main transition-all shadow-sm">
+                            <i data-lucide="zap" class="w-6 h-6"></i>
                         </div>
+                        <p class="text-[11px] font-semibold text-slate-500 mt-2 group-hover:text-brand-main transition">
+                            Energy</p>
                     </div>
-                </section>
+                    <div class="flex-shrink-0 text-center group cursor-pointer">
+                        <div
+                            class="w-14 h-14 mx-auto rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-400 group-hover:border-brand-main group-hover:text-brand-main transition-all shadow-sm">
+                            <i data-lucide="brain" class="w-6 h-6"></i>
+                        </div>
+                        <p class="text-[11px] font-semibold text-slate-500 mt-2 group-hover:text-brand-main transition">
+                            Philosophy</p>
+                    </div>
+                </div>
+            </section>
 
-                <section>
-                    <h2 class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-4">Discover Scholars
-                    </h2>
-                    <div class="space-y-4">
-                        <div class="flex items-center justify-between">
+            <section>
+                <article
+                    class="py-8 px-4 md:px-8 border-b border-slate-100 hover:bg-slate-50/30 transition-colors group relative">
+                    <div class="flex flex-col w-full">
+
+                        <header class="flex items-center justify-between mb-5">
                             <div class="flex items-center gap-3">
-                                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Lisa"
-                                    class="w-8 h-8 rounded-full">
-                                <span class="text-xs font-bold text-slate-800">Lisa Wright</span>
+                                <div class="relative">
+                                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Aris"
+                                        class="w-10 h-10 rounded-full border border-slate-100 shadow-sm">
+                                    <span
+                                        class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-brand-main border-2 border-white rounded-full"></span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <div class="flex items-center gap-2">
+                                        <h3 class="text-sm font-bold text-slate-900 tracking-tight">Aris Thorne</h3>
+                                        <span
+                                            class="text-[11px] text-slate-400 font-medium tracking-tighter italic">@athorne</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <p class="text-[11px] text-brand-main font-bold uppercase tracking-wider">
+                                            Philosophy</p>
+                                        <span class="text-slate-200 text-[8px]">●</span>
+                                        <span class="text-[11px] text-slate-400">2 hours ago</span>
+                                    </div>
+                                </div>
                             </div>
+
+                            <div class="relative">
+                                <button onclick="toggleThoughtOptions(event, this)"
+                                    class="p-2 text-slate-300 hover:text-slate-600 transition">
+                                    <i data-lucide="more-horizontal" class="w-5 h-5"></i>
+                                </button>
+                                <div
+                                    class="thought-options hidden absolute right-0 mt-2 w-48 bg-white border border-slate-100 shadow-xl rounded-xl z-[60]">
+                                    <button
+                                        class="w-full px-4 py-3 text-left text-xs font-semibold text-slate-600 hover:bg-slate-50 flex items-center gap-2"><i
+                                            data-lucide="bookmark" class="w-4 h-4"></i> Save</button>
+                                    <button
+                                        class="w-full px-4 py-3 text-left text-xs font-semibold text-red-500 hover:bg-red-50 flex items-center gap-2 border-t border-slate-50"><i
+                                            data-lucide="alert-circle" class="w-4 h-4"></i> Report</button>
+                                </div>
+                            </div>
+                        </header>
+
+                        <div class="w-full space-y-4">
+                            <div class="prose prose-slate max-w-none">
+                                <p class="text-slate-700 leading-relaxed text-[16px] md:text-[17px]">
+                                    Is it possible that we are over-calculating data and under-calculating the
+                                    **energy cost** of truth? If a thought takes 1kWh to compute, is it more
+                                    valuable than a thought that takes 0.01kWh? This is the core of the <span
+                                        class="text-brand-main font-medium">#ComputableEnergy</span> thesis.
+                                </p>
+                            </div>
+
+                            <div
+                                class="w-full aspect-[16/9] bg-slate-100 rounded-2xl overflow-hidden border border-slate-200 group-hover:border-slate-300 transition-colors">
+                                <div
+                                    class="w-full h-full flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
+                                    <i data-lucide="image" class="w-12 h-12 text-slate-200"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <footer class="mt-6 flex items-center justify-between">
+                            <div class="flex items-center gap-8 text-slate-400">
+                                <button
+                                    class="flex items-center gap-2 text-[12px] font-bold hover:text-red-500 transition group/icon">
+                                    <div class="p-2 group-hover/icon:bg-red-50 rounded-full transition"><i
+                                            data-lucide="heart" class="w-4.5 h-4.5"></i></div>
+                                    <span>124</span>
+                                </button>
+                                <button
+                                    class="flex items-center gap-2 text-[12px] font-bold hover:text-brand-main transition group/icon">
+                                    <div class="p-2 group-hover/icon:bg-brand-light rounded-full transition"><i
+                                            data-lucide="message-square" class="w-4.5 h-4.5"></i></div>
+                                    <span>18</span>
+                                </button>
+                                <button
+                                    class="flex items-center gap-2 text-[12px] font-bold hover:text-brand-main transition group/icon">
+                                    <div class="p-2 group-hover/icon:bg-brand-light rounded-full transition"><i
+                                            data-lucide="zap" class="w-4.5 h-4.5"></i></div>
+                                    <span>5</span>
+                                </button>
+                            </div>
+
                             <button
-                                class="text-[10px] font-bold text-brand-main uppercase hover:underline">Follow</button>
+                                class="p-2 text-slate-300 hover:text-brand-main hover:bg-brand-light rounded-full transition">
+                                <i data-lucide="bookmark" class="w-5 h-5"></i>
+                            </button>
+                        </footer>
+
+                    </div>
+                </article>
+                <!-- another post -->
+                <article class="p-4 md:p-8 border-b border-slate-100 hover:bg-slate-50/50 transition-colors group">
+                    <div class="flex items-start gap-4">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Aris"
+                            class="w-11 h-11 rounded-full border border-slate-100">
+
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between mb-2">
+                                <div class="flex items-center gap-2">
+                                    <h3 class="text-sm font-bold text-slate-900">Aris Thorne</h3>
+                                    <span class="text-slate-300">·</span>
+                                    <p class="text-[12px] text-brand-main font-bold hover:underline cursor-pointer">
+                                        Philosophy</p>
+                                    <span class="text-slate-300">·</span>
+                                    <span class="text-[11px] text-slate-400">2h</span>
+                                </div>
+                                <button
+                                    class="opacity-0 group-hover:opacity-100 text-slate-300 hover:text-slate-600 transition">
+                                    <i data-lucide="more-horizontal" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+
+                            <div class="space-y-4">
+                                <p class="text-slate-700 leading-relaxed text-[15px]">
+                                    Is it possible that we are over-calculating data and under-calculating the
+                                    **energy
+                                    cost** of truth? If a thought takes 1kWh to compute, is it more valuable than a
+                                    thought that takes 0.01kWh?
+                                </p>
+                                <div
+                                    class="w-full aspect-video bg-slate-100 rounded-xl overflow-hidden border border-slate-200">
+                                    <div class="w-full h-full flex items-center justify-center text-slate-300">
+                                        <i data-lucide="image" class="w-10 h-10"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 flex items-center gap-8 text-slate-400">
+                                <button class="flex items-center gap-2 text-[12px] hover:text-red-500 transition">
+                                    <i data-lucide="heart" class="w-4 h-4"></i> 124
+                                </button>
+                                <button class="flex items-center gap-2 text-[12px] hover:text-brand-main transition">
+                                    <i data-lucide="message-circle" class="w-4 h-4"></i> 18
+                                </button>
+                                <button class="flex items-center gap-2 text-[12px] hover:text-brand-main transition">
+                                    <i data-lucide="repeat" class="w-4 h-4"></i> 5
+                                </button>
+                                <button class="ml-auto hover:text-brand-main transition">
+                                    <i data-lucide="bookmark" class="w-4 h-4"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </section>
-
-                <footer class="text-[10px] text-slate-300 flex flex-wrap gap-x-4 gap-y-2 font-medium">
-                    <span>© 2025 Ksharer</span>
-                    <a href="#" class="hover:text-slate-500">Ethics</a>
-                    <a href="#" class="hover:text-slate-500">Privacy</a>
-                </footer>
-            </aside>
-
-        </div>
-    </main>
-
-    <!-- modals -->
-    <div id="createThoughtModal"
-        class="hidden fixed inset-0 z-[150] flex items-end sm:items-center justify-center p-0 sm:p-4">
-        <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" onclick="toggleModal('createThoughtModal')">
+                </article>
+            </section>
         </div>
 
-        <div
-            class="relative bg-white w-full max-w-lg rounded-t-[2rem] sm:rounded-3xl shadow-2xl overflow-hidden transform transition-all animate-in slide-in-from-bottom duration-300">
+        <aside class="hidden md:block md:col-span-4 py-8 pr-6 space-y-10">
 
-            <div class="px-6 py-4 border-b border-slate-50 flex items-center justify-between">
-                <h2 class="text-sm font-bold text-slate-800 uppercase tracking-widest">Share a Thought</h2>
-                <button onclick="toggleModal('createThoughtModal')"
-                    class="p-2 hover:bg-slate-50 rounded-full transition text-slate-400">
-                    <i data-lucide="x" class="w-5 h-5"></i>
-                </button>
-            </div>
-
-            <div class="p-6 space-y-6">
-                <div>
-                    <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-3">Select
-                        Niche</label>
-                    <div class="flex gap-3 overflow-x-auto no-scrollbar pb-2">
-                        <label class="flex-shrink-0 cursor-pointer group">
-                            <input type="radio" name="niche" class="hidden peer" checked>
-                            <div
-                                class="px-4 py-2 rounded-full border border-slate-200 bg-white text-xs font-bold text-slate-500 peer-checked:border-brand-main peer-checked:bg-brand-light peer-checked:text-brand-main transition-all">
-                                Philosophy
-                            </div>
-                        </label>
-                        <label class="flex-shrink-0 cursor-pointer group">
-                            <input type="radio" name="niche" class="hidden peer">
-                            <div
-                                class="px-4 py-2 rounded-full border border-slate-200 bg-white text-xs font-bold text-slate-500 peer-checked:border-brand-main peer-checked:bg-brand-light peer-checked:text-brand-main transition-all">
-                                Computing
-                            </div>
-                        </label>
-                        <label class="flex-shrink-0 cursor-pointer group">
-                            <input type="radio" name="niche" class="hidden peer">
-                            <div
-                                class="px-4 py-2 rounded-full border border-slate-200 bg-white text-xs font-bold text-slate-500 peer-checked:border-brand-main peer-checked:bg-brand-light peer-checked:text-brand-main transition-all">
-                                Energy
-                            </div>
-                        </label>
+            <section>
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em]">New Resources</h2>
+                    <i data-lucide="chevron-right" class="w-4 h-4 text-slate-300"></i>
+                </div>
+                <div class="flex gap-4 overflow-x-auto no-scrollbar pb-2">
+                    <div
+                        class="w-48 flex-shrink-0 p-4 bg-slate-50 border border-slate-100 rounded-xl hover:border-brand-main/30 transition-colors cursor-pointer group">
+                        <div
+                            class="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-brand-main mb-3 shadow-sm">
+                            <i data-lucide="file-text" class="w-5 h-5"></i>
+                        </div>
+                        <p class="text-xs font-bold text-slate-800 line-clamp-2 mb-1 group-hover:text-brand-main">
+                            The
+                            Computable Energy Thesis</p>
+                        <p class="text-[10px] text-slate-400 font-medium italic">By LightMann</p>
                     </div>
                 </div>
+            </section>
 
-                <div class="relative">
-                    <textarea rows="5" placeholder="What's on your mind? Use #tags to link concepts..."
-                        class="w-full text-lg text-slate-700 placeholder:text-slate-300 border-none focus:ring-0 resize-none p-0"></textarea>
-                </div>
-
-                <div class="flex items-center justify-between pt-4 border-t border-slate-50">
-                    <div class="flex items-center gap-4 text-slate-400">
-                        <button class="hover:text-brand-main transition"><i data-lucide="image"
-                                class="w-5 h-5"></i></button>
-                        <button class="hover:text-brand-main transition"><i data-lucide="link-2"
-                                class="w-5 h-5"></i></button>
-                        <button class="hover:text-brand-main transition"><i data-lucide="list"
-                                class="w-5 h-5"></i></button>
+            <section>
+                <h2 class="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-4">Discover Scholars
+                </h2>
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Lisa"
+                                class="w-8 h-8 rounded-full">
+                            <span class="text-xs font-bold text-slate-800">Lisa Wright</span>
+                        </div>
+                        <button class="text-[10px] font-bold text-brand-main uppercase hover:underline">Follow</button>
                     </div>
-
-                    <button
-                        class="bg-brand-main hover:bg-brand-hover text-white px-8 py-2.5 rounded-full font-bold text-sm shadow-lg shadow-brand-main/20 transition-all transform active:scale-95">
-                        Post to Island
-                    </button>
                 </div>
-            </div>
-        </div>
+            </section>
+
+            <footer class="text-[10px] text-slate-300 flex flex-wrap gap-x-4 gap-y-2 font-medium">
+                <span>© 2025 Ksharer</span>
+                <a href="#" class="hover:text-slate-500">Ethics</a>
+                <a href="#" class="hover:text-slate-500">Privacy</a>
+            </footer>
+        </aside>
+
     </div>
+</main>
+    <!-- main content end -->
 
     <script>
-        // Improved Toggle Function to handle both modals
         function toggleModal(id) {
             const modal = document.getElementById(id);
             if (modal) {
                 modal.classList.toggle('hidden');
-
-                // Auto-focus the search input when opened
                 if (id === 'searchModal' && !modal.classList.contains('hidden')) {
-                    setTimeout(() => {
-                        document.getElementById('mobileSearchInput').focus();
-                    }, 100);
+                    setTimeout(() => document.getElementById('mobileSearchInput').focus(), 100);
                 }
             }
         }
-
-        // Close modals when clicking outside the white box
-        window.onclick = function (event) {
-            const profileModal = document.getElementById('profileModal');
-            const searchModal = document.getElementById('searchModal');
-            if (event.target == profileModal) profileModal.classList.add('hidden');
-            if (event.target == searchModal) searchModal.classList.add('hidden');
-        }
-
-        // Re-initialize icons just in case
         lucide.createIcons();
-    </script>
 
+        // post add code
+        document.getElementById("paf").addEventListener("submit", function (e) {
+                e.preventDefault();
+
+                fetch("{% url 'thoughts:create_thought' %}", {
+                    method: "POST",
+                    body: new FormData(this),
+                    headers: {
+                        "X-Requested-With": "XMLHttpRequest"
+                    },
+                    credentials: "same-origin"
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success) {
+                            console.log("Thought created", data.thought_id);
+                            toggleModal("createThoughtModal");
+                        } else {
+                            alert(data.error);
+                        }
+                    });
+            });
+
+
+        
+
+    </script>
 </body>
 
 </html>

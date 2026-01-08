@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search & Discover | Knowledge Island</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            light: '#ecfdf5',
+                            main: '#10b981',
+                            dark: '#064e3b',
+                            hover: '#059669',
+                        },
+                        surface: '#ffffff',
+                        canvas: '#f8fafc',
+                        border: '#e2e8f0',
+                        muted: '#64748b',
+                        heading: '#0f172a',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-white min-h-screen w-full flex flex-col text-slate-800 font-sans">
+
+    <nav
+        class="fixed top-0 w-full h-16 bg-white border-b border-slate-100 px-4 md:px-8 flex items-center justify-between z-50">
+        <div class="flex items-center flex-1 gap-4">
+            <button onclick="window.history.back()" class="lg:hidden p-2 text-slate-600">
+                <i data-lucide="arrow-left" class="w-6 h-6"></i>
+            </button>
+            <div class="hidden md:flex items-center gap-2">
+                <div class="w-8 h-8 bg-brand-main rounded flex items-center justify-center text-white">
+                    <img class="w-5 h-5" src="https://trustarscientist.github.io/olcwd/ksharer-logo1-no-bg.png">
+                </div>
+                <span class="font-bold text-slate-800 text-sm uppercase tracking-tighter">Knowledge Island</span>
+            </div>
+        </div>
+
+        <div class="flex-[2] flex justify-center">
+            <div class="w-full max-w-xl relative">
+                <i data-lucide="search" class="absolute left-4 top-3 w-5 h-5 text-brand-main"></i>
+                <input type="text" autofocus placeholder="Search HEAT SEEM FC sectors..."
+                    class="w-full bg-slate-100 border-2 border-transparent focus:border-brand-main/20 focus:bg-white rounded-2xl py-2.5 pl-12 pr-4 text-sm font-medium transition-all outline-none shadow-sm">
+            </div>
+        </div>
+
+        <div class="flex-1 flex justify-end">
+            <div class="hidden md:block border-l pl-5 border-slate-200">
+                <span class="text-slate-400 text-[10px] font-bold uppercase tracking-widest leading-none">Powered
+                    by</span>
+                <p class="text-brand-dark font-black text-xs uppercase leading-tight">Ksharer</p>
+            </div>
+        </div>
+    </nav>
+
+    <aside
+        class="hidden lg:flex fixed left-0 top-16 w-64 h-[calc(100vh-16px)] bg-slate-50 border-r border-slate-100 flex-col p-6 z-40">
+        <div class="mb-8">
+            <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Filter Results</h3>
+            <div class="space-y-2">
+                <label class="flex items-center gap-3 p-3 bg-white rounded-xl border border-slate-200 cursor-pointer">
+                    <input type="checkbox" checked class="w-4 h-4 accent-brand-main">
+                    <span class="text-xs font-bold text-slate-700">All Results</span>
+                </label>
+                <label
+                    class="flex items-center gap-3 p-3 hover:bg-white rounded-xl border border-transparent hover:border-slate-200 cursor-pointer transition">
+                    <input type="checkbox" class="w-4 h-4 accent-brand-main">
+                    <span class="text-xs font-bold text-slate-700">Knowledge Islands</span>
+                </label>
+                <label
+                    class="flex items-center gap-3 p-3 hover:bg-white rounded-xl border border-transparent hover:border-slate-200 cursor-pointer transition">
+                    <input type="checkbox" class="w-4 h-4 accent-brand-main">
+                    <span class="text-xs font-bold text-slate-700">Blueprints (CE)</span>
+                </label>
+                <label
+                    class="flex items-center gap-3 p-3 hover:bg-white rounded-xl border border-transparent hover:border-slate-200 cursor-pointer transition">
+                    <input type="checkbox" class="w-4 h-4 accent-brand-main">
+                    <span class="text-xs font-bold text-slate-700">Experts</span>
+                </label>
+            </div>
+        </div>
+    </aside>
+
+    <main class="lg:ml-64 pt-24 pb-24 lg:pb-8 px-4 md:px-8 max-w-5xl">
+
+        <section class="mb-10">
+            <h2 class="text-xs font-black text-slate-400 uppercase tracking-[0.2em] mb-4">Explore by Sector</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+                <button
+                    class="flex flex-col items-center gap-2 p-4 bg-white border border-slate-100 rounded-2xl hover:border-brand-main hover:shadow-md transition group">
+                    <i data-lucide="home" class="w-6 h-6 text-slate-400 group-hover:text-brand-main"></i>
+                    <span class="text-[10px] font-bold uppercase">Housing</span>
+                </button>
+                <button
+                    class="flex flex-col items-center gap-2 p-4 bg-white border border-slate-100 rounded-2xl hover:border-brand-main hover:shadow-md transition group">
+                    <i data-lucide="graduation-cap" class="w-6 h-6 text-slate-400 group-hover:text-brand-main"></i>
+                    <span class="text-[10px] font-bold uppercase">Education</span>
+                </button>
+                <button
+                    class="flex flex-col items-center gap-2 p-4 bg-white border border-slate-100 rounded-2xl hover:border-brand-main hover:shadow-md transition group">
+                    <i data-lucide="zap" class="w-6 h-6 text-brand-main"></i>
+                    <span class="text-[10px] font-bold uppercase">Energy</span>
+                </button>
+                <button
+                    class="flex flex-col items-center gap-2 p-4 bg-white border border-slate-100 rounded-2xl hover:border-brand-main hover:shadow-md transition group">
+                    <i data-lucide="shield-check" class="w-6 h-6 text-slate-400 group-hover:text-brand-main"></i>
+                    <span class="text-[10px] font-bold uppercase">Security</span>
+                </button>
+                <button
+                    class="flex flex-col items-center gap-2 p-4 bg-white border border-slate-100 rounded-2xl hover:border-brand-main hover:shadow-md transition group">
+                    <i data-lucide="activity" class="w-6 h-6 text-slate-400 group-hover:text-brand-main"></i>
+                    <span class="text-[10px] font-bold uppercase">Medical</span>
+                </button>
+            </div>
+        </section>
+
+        <section>
+            <div class="flex justify-between items-end mb-6">
+                <h2 class="text-xl font-black text-slate-900">Featured Results</h2>
+                <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Showing 3 matches</span>
+            </div>
+
+            <div class="space-y-4">
+                <div
+                    class="bg-white border border-slate-100 rounded-[2rem] p-6 hover:shadow-xl hover:shadow-slate-200/40 transition group cursor-pointer">
+                    <div class="flex items-center gap-4 mb-3">
+                        <div
+                            class="w-12 h-12 bg-brand-light rounded-2xl flex items-center justify-center text-brand-main">
+                            <i data-lucide="mountain" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h3 class="font-bold text-slate-900 group-hover:text-brand-main transition">Computable
+                                    Energy Systems</h3>
+                                <span
+                                    class="text-[9px] bg-brand-main text-white px-2 py-0.5 rounded font-black uppercase">Island</span>
+                            </div>
+                            <p class="text-xs text-slate-400 font-medium">4,280 Members • 150 Blueprints</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-600 leading-relaxed">The primary hub for discussing the implementation
+                        of Ksharer's two-path vision and Computable Energy infrastructure.</p>
+                </div>
+
+                <div
+                    class="bg-white border border-slate-100 rounded-[2rem] p-6 hover:shadow-xl hover:shadow-slate-200/40 transition group cursor-pointer">
+                    <div class="flex items-center gap-4 mb-3">
+                        <div class="w-12 h-12 bg-slate-900 rounded-2xl flex items-center justify-center text-white">
+                            <i data-lucide="file-code" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h3 class="font-bold text-slate-900 group-hover:text-brand-main transition">
+                                    Decentralized Housing Grid v1.0</h3>
+                                <span
+                                    class="text-[9px] bg-slate-200 text-slate-600 px-2 py-0.5 rounded font-black uppercase">Blueprint</span>
+                            </div>
+                            <p class="text-xs text-slate-400 font-medium">By Felix Mann • Cost: 200 Zini</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-600 leading-relaxed">A technical blueprint for combining localized
+                        energy generation with smart housing clusters.</p>
+                </div>
+
+                <div
+                    class="bg-white border border-slate-100 rounded-[2rem] p-6 hover:shadow-xl hover:shadow-slate-200/40 transition group cursor-pointer">
+                    <div class="flex items-center gap-4">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Expert"
+                            class="w-12 h-12 rounded-2xl bg-slate-50 border">
+                        <div class="flex-1">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="font-bold text-slate-900 group-hover:text-brand-main transition">Dr. Aris
+                                        Thorne</h3>
+                                    <p class="text-xs text-brand-main font-bold uppercase tracking-tighter">Energy
+                                        Economist</p>
+                                </div>
+                                <button
+                                    class="bg-slate-900 text-white px-4 py-1.5 rounded-xl text-[10px] font-bold uppercase tracking-widest hover:bg-brand-main transition">Follow</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <nav
+        class="md:hidden fixed bottom-0 w-full h-16 bg-white border-t border-slate-100 flex items-center justify-around z-50 px-2">
+        <a href="index.html" class="flex flex-col items-center text-slate-400">
+            <i data-lucide="home" class="w-6 h-6"></i>
+        </a>
+        <a href="library.html" class="flex flex-col items-center text-slate-400">
+            <i data-lucide="library" class="w-6 h-6"></i>
+        </a>
+        <a href="search.html" class="flex flex-col items-center text-brand-main">
+            <i data-lucide="search" class="w-6 h-6"></i>
+        </a>
+        <a href="messages.html" class="flex flex-col items-center text-slate-400">
+            <i data-lucide="message-circle" class="w-6 h-6"></i>
+        </a>
+        <a href="notifications.html" class="flex flex-col items-center text-slate-400">
+            <i data-lucide="bell" class="w-6 h-6"></i>
+        </a>
+    </nav>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

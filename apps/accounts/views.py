@@ -25,11 +25,11 @@ def login_view(request):
         if result == "inactive":
             form.add_error(None, "Please activate your account via email.")
         elif result:
-            return redirect('accounts:home')
+            return redirect('core:feed')
         else:
             form.add_error(None, "Invalid credentials")
 
-    return render(request, 'core/feed.html', {'form': form})
+    return render(request, 'accounts/login.html', {'form': form})
 
 
 

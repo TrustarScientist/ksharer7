@@ -77,8 +77,8 @@
                 <a href="#" class="hover:text-brand-main transition-colors">DevWorks</a>
             </div>
             <div class="flex items-center gap-4">
-                <a href="/login" class="text-xs font-bold text-slate-900">Log In</a>
-                <a href="/register"
+                <a href="{% url 'accounts:login' %}" class="text-xs font-bold text-slate-900">Log In</a>
+                <a href="{% url 'accounts:register' %}"
                     class="px-5 py-2 bg-slate-900 text-white rounded-full text-xs font-bold uppercase tracking-wide hover:bg-brand-main transition-all">
                     Join
                 </a>

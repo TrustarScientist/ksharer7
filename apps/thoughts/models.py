@@ -5,14 +5,24 @@ User = settings.AUTH_USER_MODEL
 
 
 class Thought(models.Model):
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="thoughts")
-    niche = models.ForeignKey("niches.Niche", on_delete=models.CASCADE, related_name="thoughts")
-
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField(max_length=500)
 
-    is_pinned = models.BooleanField(default=False)
-
-    created_at = models.DateTimeField(auto_now_add=True)
+    niche = models.ForeignKey(
+        "niches.Niche",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="thoughts"
+    )
 
     class Meta:
         ordering = ["-created_at"]
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.author} - {self.content[:30]}"
+
+    
+
